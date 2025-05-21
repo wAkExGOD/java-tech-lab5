@@ -11,9 +11,16 @@ public class Main {
         logger.info("Start program...");
 
         Console.log("Task C");
+        FloatNumberProcessor processor = new FloatNumberProcessor();
         try {
-            Numbers.execute();
-        } catch(FileException e) {
+            processor.readNumbersFromFile("src/main/resources/numbers.txt");
+            Console.log("Sum: " + processor.getSum());
+            Console.log("Average: " + processor.getAverage());
+
+            // Запись результатов в файл
+            processor.writeResultsToFile("src/main/resources/output.txt");
+            Console.log("Results written to output.txt");
+        } catch (CustomException e) {
             Console.log(e.getMessage());
         }
 
